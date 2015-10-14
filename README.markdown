@@ -27,3 +27,16 @@ We did not do anything asynchronous in this example. A more realistic example
 would call out to an external service. An S3 event example might be more
 instructive.
 
+## Build and Install
+
+To create your own Lambda package:
+
+```
+$> git clone https://github.com/kofno/BasicLambda
+$> cd BasicLambda
+$> pulp dep install
+$> npm run build
+$> npm run package
+```
+To install, upload the deploy.zip file as your own Lambda function.
+
