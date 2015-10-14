@@ -11,7 +11,7 @@
   "scripts": {
     "test": "pulp test",
     "build": "pulp build -o node_modules",
-    "package": "rm deploy.zip && zip -r deploy *"
+    "package": "rm -f deploy.zip && zip -r deploy *"
   },
   "author": "",
   "license": "MIT"
