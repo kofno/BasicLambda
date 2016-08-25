@@ -1,19 +1,19 @@
 module BasicLambda where
 
-import Prelude
+import Prelude (Unit, unit, pure, bind, show, ($))
 
-import Control.Monad.Eff
-import Data.Foreign
-import Data.Foreign.Class
-import Data.Either
+import Control.Monad.Eff (Eff)
+import Data.Foreign (F, Foreign)
+import Data.Foreign.Class (read)
+import Data.Either (Either(..))
 
-import AWS.Lambda.Context
-import BasicData
+import AWS.Lambda.Context (LAMBDA, Context, succeed, fail)
+import BasicData (LambdaData)
 
 handler :: forall eff. Context -> Foreign -> Eff (lambda :: LAMBDA | eff) Unit
 handler c d = do
   process $ readData d
-  return unit
+  pure unit
 
   where
     readData :: Foreign -> F LambdaData

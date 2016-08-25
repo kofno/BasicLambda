@@ -11,4 +11,3 @@ foreign import data LAMBDA :: !
 foreign import succeed :: forall eff. Context -> String -> Eff (lambda :: LAMBDA | eff) Unit
 
 foreign import fail :: forall eff. Context -> String -> Eff (lambda :: LAMBDA | eff) Unit
-
