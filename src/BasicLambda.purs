@@ -21,4 +21,4 @@ handler c d = do
 
     process :: F LambdaData -> Eff (lambda :: LAMBDA | eff) Unit
     process (Left err) = fail c $ show err
-    process (Right d)  = succeed c $ show d
+    process (Right d')  = succeed c $ show d'

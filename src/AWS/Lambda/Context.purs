@@ -1,8 +1,7 @@
 module AWS.Lambda.Context where
 
-import Prelude
-
-import Control.Monad.Eff
+import Prelude (Unit)
+import Control.Monad.Eff (Eff)
 
 foreign import data Context :: *
 
