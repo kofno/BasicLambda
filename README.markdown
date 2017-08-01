@@ -34,7 +34,7 @@ To create your own Lambda package:
 ```
 $> git clone https://github.com/kofno/BasicLambda
 $> cd BasicLambda
-$> pulp dep install
+$> bower up
 $> npm run build
 $> npm run package
 ```

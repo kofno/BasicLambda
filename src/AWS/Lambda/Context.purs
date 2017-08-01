@@ -1,11 +1,11 @@
 module AWS.Lambda.Context where
 
 import Prelude (Unit)
-import Control.Monad.Eff (Eff)
+import Control.Monad.Eff (kind Effect, Eff)
 
-foreign import data Context :: *
+foreign import data Context :: Type
 
-foreign import data LAMBDA :: !
+foreign import data LAMBDA :: Effect
 
 foreign import succeed :: forall eff. Context -> String -> Eff (lambda :: LAMBDA | eff) Unit
 
