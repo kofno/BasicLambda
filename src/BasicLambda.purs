@@ -1,13 +1,12 @@
 module BasicLambda where
 
 import Prelude (class Show, (<>), (>>=), Unit, unit, pure, bind, show, ($), discard)
-
 import Control.Monad.Eff (Eff)
 import Control.Monad.Except (runExcept)
-import Data.Foreign (F, Foreign, readString)
+import Data.Foreign (F, Foreign, ForeignError, readString)
 import Data.Foreign.Index ((!))
 import Data.Either (Either(..))
-
+import Data.List.Types (NonEmptyList)
 import AWS.Lambda.Context (LAMBDA, Context, succeed, fail)
 
 newtype LambdaData = LambdaData { key1 :: String
@@ -30,7 +29,7 @@ handler c d = do
         key2 <- value ! "key2" >>= readString
         pure $ LambdaData { key1, key2 }
 
-    -- Looks like this signature doesn't match but it works without it
-    -- process :: F LambdaData -> Eff (lambda :: LAMBDA | eff) Unit
+    process :: Either (NonEmptyList ForeignError) LambdaData
+            -> Eff (lambda :: LAMBDA | eff) Unit
     process (Left err) = fail c $ show err
     process (Right d') = succeed c $ show d'
